@@ -48,10 +48,14 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
         src: url('/fonts/MonaspaceXenon-700.woff2') format('woff2');
       }
       :root {
-        color-scheme: light dark;
-        --accent: #3b82f6;
-        --border: #8883;
-        --muted: color-mix(in srgb, currentColor 60%, transparent);
+        color-scheme: light;
+        --accent: #d34b35;
+        --accent-dark: #9c2f22;
+        --surface: #fffaf4;
+        --surface-raised: #ffffff;
+        --ink: #292524;
+        --border: #d8cfc4;
+        --muted: #766b61;
         --radius: 0.6rem;
         --font-body: 'Monaspace Neon', ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
         --font-head: 'Monaspace Xenon', 'Monaspace Neon', ui-monospace, monospace;
@@ -59,6 +63,8 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
       * { box-sizing: border-box; }
       body {
         font-family: var(--font-body);
+        color: var(--ink);
+        background: radial-gradient(circle at top right, #f8d7b8 0, transparent 30rem), #f5eee7;
         line-height: 1.5;
         max-width: 40rem;
         margin: 0 auto;
@@ -69,6 +75,11 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
       .tagline { margin: 0; color: var(--muted); }
 
       form {
+        padding: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) + 0.2rem);
+        box-shadow: 0 1rem 2rem #8f6e5220;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -97,7 +108,7 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
         font-weight: 600;
         cursor: pointer;
       }
-      button:hover { filter: brightness(1.05); }
+      button:hover { background: var(--accent-dark); }
       .hint { margin: 0 0 1.5rem; font-size: 0.8rem; color: var(--muted); }
 
       #list-header {
@@ -127,6 +138,8 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
         padding: 0.75rem 0.9rem;
         border: 1px solid var(--border);
         border-radius: var(--radius);
+        background: var(--surface-raised);
+        box-shadow: 0 0.4rem 1rem #8f6e5212;
       }
       .bookmark .url { flex: 1 1 12rem; overflow-wrap: anywhere; }
       .bookmark .slug {
@@ -134,7 +147,7 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
         font-size: 0.85rem;
         padding: 0.15rem 0.5rem;
         border-radius: 999px;
-        background: color-mix(in srgb, var(--accent) 18%, transparent);
+        background: #f5d9c5;
       }
       .bookmark .copy {
         background: transparent;
